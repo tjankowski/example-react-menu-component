@@ -17,10 +17,20 @@ function bem(prefix, className, modifier) {
   return `${prefix}__${className}`;
 }
 
+export const POSITION = {
+  fixed: "fixed",
+  static: "static",
+  relative: "relative",
+  absolute: "absolute",
+  sticky: "sticky",
+  undefined: null,
+};
+
 function TopMenu({
   items = [],
   seletedItem = "",
   className = "navigation",
+  position = POSITION.fixed,
   onItemSelect,
   onCancel,
 }) {
@@ -67,8 +77,11 @@ function TopMenu({
   const menuClass = cx(bem(className, "menu"), {
     [bem(className, "menu", "visible")]: seletedItem.length > 0,
   });
+  const navigationStyle = {
+    position,
+  };
   return (
-    <nav role="navigation" className={className}>
+    <nav role="navigation" className={className} style={navigationStyle}>
       <ul
         ref={menuElement}
         className={menuClass}
