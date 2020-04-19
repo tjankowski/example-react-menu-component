@@ -1,0 +1,13 @@
+$breakpoint-tablet: 768px;
+$white: #ffffff;
+$dark: #444444;
+$pink: #f5487f;
+$pink-light: #f7abba;
+$shadow: 0 8px 32px -16px $dark;
+$transtion: 0.3s ease;
+
+@mixin for-desktop {
+    @media (min-width: $breakpoint-tablet) {
+      @content;
+    }
+  }
